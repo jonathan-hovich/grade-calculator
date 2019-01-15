@@ -18,6 +18,7 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var weightErrorMsgLabel: UILabel!
     @IBOutlet weak var gradeErrorMsgLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var editGrade: Bool = false;
     var noChanges: Bool = false;
@@ -103,7 +104,10 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-   
+    @IBAction func cancelButton_TouchUpInside(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
 
     @IBAction func addButton_TouchUpInside(_ sender: UIButton) {
         var valid : Bool = true

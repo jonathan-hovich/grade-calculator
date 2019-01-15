@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var avgLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var noGradesLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +29,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (gradeWeights.count == 0) {
             descLabel.isHidden = true
             avgLabel.isHidden = true
+            noGradesLabel.isHidden = false
+            noGradesLabel.text = "Click the \"+\" to add a grade."
         }
         else {
             descLabel.isHidden = false
             avgLabel.isHidden = false
+            noGradesLabel.isHidden = true
         }
     }
     
@@ -68,10 +72,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if (gradeWeights.count == 0) {
                 descLabel.isHidden = true
                 avgLabel.isHidden = true
+                noGradesLabel.isHidden = false
+                noGradesLabel.text = "Click the \"+\" to add a grade."
             }
             else {
                 descLabel.isHidden = false
                 avgLabel.isHidden = false
+                noGradesLabel.isHidden = true
             }
             
         }
@@ -127,6 +134,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         updateAvg()
         descLabel.isHidden = false
         avgLabel.isHidden = false
+        noGradesLabel.isHidden = true
         
     }
     

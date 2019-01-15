@@ -33,13 +33,21 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No grades label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-rW-l9f">
+                                        <rect key="frame" x="8" y="14" width="120" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="fDz-rW-l9f" firstAttribute="top" secondItem="Qtw-vJ-TeG" secondAttribute="top" constant="14" id="OPq-pI-S9b"/>
                                     <constraint firstItem="Ja6-o8-9mj" firstAttribute="top" secondItem="Qtw-vJ-TeG" secondAttribute="top" constant="14" id="P7b-qR-IV6"/>
                                     <constraint firstItem="Ja6-o8-9mj" firstAttribute="leading" secondItem="37K-xf-K2o" secondAttribute="trailing" constant="8" symbolic="YES" id="Vb4-Sv-Yrz"/>
                                     <constraint firstItem="Ja6-o8-9mj" firstAttribute="trailing" secondItem="Qtw-vJ-TeG" secondAttribute="trailingMargin" id="g2c-ex-vAk"/>
                                     <constraint firstItem="37K-xf-K2o" firstAttribute="top" secondItem="Qtw-vJ-TeG" secondAttribute="top" constant="19" id="osP-9X-2WU"/>
+                                    <constraint firstItem="fDz-rW-l9f" firstAttribute="leading" secondItem="Qtw-vJ-TeG" secondAttribute="leading" constant="8" id="ydh-lC-rxX"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Z2-xy-qjA">
@@ -145,6 +153,7 @@
                     <connections>
                         <outlet property="avgLabel" destination="Ja6-o8-9mj" id="OMO-gx-Uuw"/>
                         <outlet property="descLabel" destination="37K-xf-K2o" id="6aM-bD-7dp"/>
+                        <outlet property="noGradesLabel" destination="fDz-rW-l9f" id="usZ-MT-e8B"/>
                         <outlet property="tableView" destination="1Z2-xy-qjA" id="dOf-XP-hwp"/>
                     </connections>
                 </viewController>
@@ -194,7 +203,7 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade (%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJk-Vd-MOd">
                                         <rect key="frame" x="14" y="182" width="74" height="20"/>
@@ -219,7 +228,7 @@
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ey-oH-Fcb">
                                         <rect key="frame" x="8" y="244" width="261" height="30"/>
@@ -242,6 +251,18 @@
                                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpi-sj-5au">
+                                        <rect key="frame" x="8" y="8" width="25" height="25"/>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="0.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="4xC-et-VJj"/>
+                                            <constraint firstAttribute="width" constant="25" id="zcE-zl-FBZ"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="CancelButton"/>
+                                        <connections>
+                                            <action selector="cancelButton_TouchUpInside:" destination="GhJ-F8-2Gc" eventType="touchUpInside" id="WIB-bJ-gaX"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -269,7 +290,9 @@
                                     <constraint firstItem="4ic-80-AxO" firstAttribute="top" secondItem="Ydk-Mf-HIc" secondAttribute="bottom" constant="8" id="h0o-hQ-aHb"/>
                                     <constraint firstAttribute="trailing" secondItem="v94-AW-ViY" secondAttribute="trailing" constant="8" id="haY-FG-Qs5"/>
                                     <constraint firstItem="Ydk-Mf-HIc" firstAttribute="top" secondItem="dbS-XY-Dzt" secondAttribute="top" id="iNV-9L-Mjw"/>
+                                    <constraint firstItem="Bpi-sj-5au" firstAttribute="top" secondItem="dbS-XY-Dzt" secondAttribute="top" constant="8" id="pjX-aJ-x63"/>
                                     <constraint firstItem="AJk-Vd-MOd" firstAttribute="leading" secondItem="dbS-XY-Dzt" secondAttribute="leading" constant="14" id="rez-D3-Evz"/>
+                                    <constraint firstItem="Bpi-sj-5au" firstAttribute="leading" secondItem="dbS-XY-Dzt" secondAttribute="leading" constant="8" id="sIp-ZD-V1z"/>
                                     <constraint firstAttribute="trailing" secondItem="9O9-fW-oYa" secondAttribute="trailing" constant="8" id="wCs-kL-dOY"/>
                                     <constraint firstAttribute="trailing" secondItem="9PK-Xy-pdv" secondAttribute="trailing" constant="183" id="xqR-pU-mr6"/>
                                     <constraint firstItem="Ydk-Mf-HIc" firstAttribute="leading" secondItem="dbS-XY-Dzt" secondAttribute="leading" id="yO2-iu-NaO"/>
@@ -293,6 +316,7 @@
                     <navigationItem key="navigationItem" id="tKm-Fy-9LF"/>
                     <connections>
                         <outlet property="addButton" destination="8Ey-oH-Fcb" id="Soq-Au-BLM"/>
+                        <outlet property="cancelButton" destination="Bpi-sj-5au" id="3Px-SM-i7K"/>
                         <outlet property="gradeErrorMsgLabel" destination="XPz-pj-zBQ" id="a8d-VX-2Qz"/>
                         <outlet property="gradeTextField" destination="v94-AW-ViY" id="7t4-EY-3wz"/>
                         <outlet property="nameTextField" destination="S78-AT-n7t" id="7v5-qy-ccf"/>
@@ -325,6 +349,9 @@
             <point key="canvasLocation" x="1608.8" y="32.833583208395808"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CancelButton" width="1200" height="1200"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fK3-FF-bFq"/>
     </inferredMetricsTieBreakers>
