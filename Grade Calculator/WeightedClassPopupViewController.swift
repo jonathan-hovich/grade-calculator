@@ -8,25 +8,23 @@
 
 import UIKit
 
-class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
+class WeightedClassPopupViewController: UIViewController, UITextFieldDelegate {
     // outlets
     @IBOutlet weak var popup: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var creditTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var weightTextField: UITextField!
-    @IBOutlet weak var gradeTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var weightErrorMsgLabel: UILabel!
-    @IBOutlet weak var gradeErrorMsgLabel: UILabel!
+    @IBOutlet weak var creditErrorMsgLabel: UILabel!
     
-    var editGrade: Bool = false;
+    var editClass: Bool = false;
+    
     var noChanges: Bool = false;
-    var onSave: ((_ weight: Double, _ grade: Double, _ name: String, _ editingState: Bool) -> ())?
+    var onSave: ((_ course: Course, _ editingState: Bool) -> ())?
     
-    var tempGradeVal: String = ""
-    var tempGradeWeight: String = ""
-    var tempGradeName: String = ""
+    var tempClassCredit: String = ""
+    var tempClassName: String = ""
     
     var activeTextField : UITextField!
     
@@ -34,20 +32,16 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // actions for input fields
-        weightTextField.addTarget(self, action: #selector(WeightedGradePopupViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
-        nameTextField.addTarget(self, action: #selector(WeightedGradePopupViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
-        gradeTextField.addTarget(self, action: #selector(WeightedGradePopupViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        creditTextField.addTarget(self, action: #selector(WeightedClassPopupViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
+        nameTextField.addTarget(self, action: #selector(WeightedClassPopupViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         
         // defualt element attributes
-        gradeTextField.layer.borderColor = UIColor.lightGray.cgColor
-        gradeTextField.layer.borderWidth = 1.0
-        gradeTextField.layer.cornerRadius = 5.0
         nameTextField.layer.borderColor = UIColor.lightGray.cgColor
         nameTextField.layer.borderWidth = 1.0
         nameTextField.layer.cornerRadius = 5.0
-        weightTextField.layer.borderColor = UIColor.lightGray.cgColor
-        weightTextField.layer.borderWidth = 1.0
-        weightTextField.layer.cornerRadius = 5.0
+        creditTextField.layer.borderColor = UIColor.lightGray.cgColor
+        creditTextField.layer.borderWidth = 1.0
+        creditTextField.layer.cornerRadius = 5.0
         
         // listen to keyboard events
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -55,20 +49,18 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
         // changes action button title based on state
-        if !editGrade {
+        if !editClass {
             addButton.setTitle("Add", for: .normal)
             titleLabel.text = "New Grade"
         }
         else {
             addButton.setTitle("Done", for: .normal)
             titleLabel.text = "Edit Grade"
-            weightTextField.text = tempGradeWeight
-            gradeTextField.text = tempGradeVal
-            nameTextField.text = tempGradeName
+            creditTextField.text = tempClassCredit
+            nameTextField.text = tempClassName
         }
         
-        weightErrorMsgLabel.text = ""
-        gradeErrorMsgLabel.text = ""
+        creditErrorMsgLabel.text = ""
     }
     
     deinit {
@@ -92,8 +84,8 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
     
     
     @objc func textFieldDidChange(_ textField: UITextField){
-        if (editGrade) {
-            if (tempGradeVal == gradeTextField.text && tempGradeWeight == weightTextField.text && tempGradeName == nameTextField.text) {
+        if (editClass) {
+            if (tempClassCredit == creditTextField.text && tempClassName == nameTextField.text) {
                 addButton.setTitle("Done", for: .normal)
                 noChanges = true
             }
@@ -111,8 +103,6 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func addButton_TouchUpInside(_ sender: UIButton) {
         var valid : Bool = true
-        var tempWeight : Double? = weightTextField.text?.doubleValue
-        var tempGrade : Double? = gradeTextField.text?.doubleValue
         
         if noChanges {
             dismiss(animated: true)
@@ -128,36 +118,24 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
         }
         
         
-        if (!weightTextField.hasText) {
-            weightTextField.layer.borderColor = UIColor.red.cgColor
+        if (!creditTextField.hasText) {
+            creditTextField.layer.borderColor = UIColor.red.cgColor
             valid = false
         }
-        else if (tempWeight == nil) {
-            weightErrorMsgLabel.text = "Numeric values only"
-            weightTextField.layer.borderColor = UIColor.red.cgColor
-            valid = false
-        }
-        else {
-            weightTextField.layer.borderColor = UIColor.lightGray.cgColor
-            weightErrorMsgLabel.text = ""
-        }
-        
-        if (!gradeTextField.hasText) {
-            gradeTextField.layer.borderColor = UIColor.red.cgColor
-            valid = false
-        }
-        else if (tempGrade == nil) {
-            gradeErrorMsgLabel.text = "Numeric values only"
-            gradeTextField.layer.borderColor = UIColor.red.cgColor
+        else if (creditTextField.text?.doubleValue == nil) {
+            creditErrorMsgLabel.text = "Numeric values only"
+            creditTextField.layer.borderColor = UIColor.red.cgColor
             valid = false
         }
         else {
-            gradeTextField.layer.borderColor = UIColor.lightGray.cgColor
-            gradeErrorMsgLabel.text = ""
+            creditTextField.layer.borderColor = UIColor.lightGray.cgColor
+            creditErrorMsgLabel.text = ""
         }
         
         if valid {
-            onSave?(tempWeight!, tempGrade!, nameTextField.text!, editGrade)
+            var newClass = Course(name: nameTextField.text!, creditWeight: (creditTextField.text?.doubleValue)!, currentGrade: nil)
+            
+            onSave?(newClass, editClass)
             dismiss(animated: true)
         }
     }
@@ -169,5 +147,19 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension String {
+    struct NumFormatter {
+        static let instance = NumberFormatter()
+    }
+    
+    var doubleValue: Double? {
+        return NumFormatter.instance.number(from: self)?.doubleValue
+    }
+    
+    var integerValue: Int? {
+        return NumFormatter.instance.number(from: self)?.intValue
     }
 }

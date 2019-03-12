@@ -14,6 +14,8 @@
 		133B860D20FE6288001CED6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133B860B20FE6288001CED6C /* LaunchScreen.storyboard */; };
 		133B861520FE6688001CED6C /* WeightedGradePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133B861420FE6688001CED6C /* WeightedGradePopupViewController.swift */; };
 		13DA82E921001C42002DBBD8 /* ViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DA82E821001C42002DBBD8 /* ViewControllerTableViewCell.swift */; };
+		F57B21DA223747E2009272FD /* ClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57B21D9223747E2009272FD /* ClassesViewController.swift */; };
+		F5B849102238203800264F6F /* WeightedClassPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B8490F2238203800264F6F /* WeightedClassPopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		133B860E20FE6288001CED6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		133B861420FE6688001CED6C /* WeightedGradePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedGradePopupViewController.swift; sourceTree = "<group>"; };
 		13DA82E821001C42002DBBD8 /* ViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableViewCell.swift; sourceTree = "<group>"; };
+		F57B21D9223747E2009272FD /* ClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesViewController.swift; sourceTree = "<group>"; };
+		F5B8490F2238203800264F6F /* WeightedClassPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightedClassPopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +64,14 @@
 			children = (
 				133B860220FE6286001CED6C /* AppDelegate.swift */,
 				133B860420FE6286001CED6C /* ViewController.swift */,
+				F5B8490F2238203800264F6F /* WeightedClassPopupViewController.swift */,
 				133B861420FE6688001CED6C /* WeightedGradePopupViewController.swift */,
 				13DA82E821001C42002DBBD8 /* ViewControllerTableViewCell.swift */,
 				133B860620FE6287001CED6C /* Main.storyboard */,
 				133B860920FE6288001CED6C /* Assets.xcassets */,
 				133B860B20FE6288001CED6C /* LaunchScreen.storyboard */,
 				133B860E20FE6288001CED6C /* Info.plist */,
+				F57B21D9223747E2009272FD /* ClassesViewController.swift */,
 			);
 			path = "Grade Calculator";
 			sourceTree = "<group>";
@@ -143,6 +149,8 @@
 			files = (
 				133B861520FE6688001CED6C /* WeightedGradePopupViewController.swift in Sources */,
 				133B860520FE6286001CED6C /* ViewController.swift in Sources */,
+				F57B21DA223747E2009272FD /* ClassesViewController.swift in Sources */,
+				F5B849102238203800264F6F /* WeightedClassPopupViewController.swift in Sources */,
 				13DA82E921001C42002DBBD8 /* ViewControllerTableViewCell.swift in Sources */,
 				133B860320FE6286001CED6C /* AppDelegate.swift in Sources */,
 			);
