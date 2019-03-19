@@ -13,6 +13,8 @@ class ViewControllerTableViewCell: UITableViewCell {
     @IBOutlet weak var gradeName: UILabel!
     @IBOutlet weak var gradeWeight: UILabel!
     @IBOutlet weak var gradeValue: UILabel!
+    @IBOutlet weak var noGrades: UILabel!
+    @IBOutlet weak var gradePercent: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

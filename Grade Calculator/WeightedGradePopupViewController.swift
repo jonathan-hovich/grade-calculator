@@ -22,7 +22,7 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
     
     var editGrade: Bool = false;
     var noChanges: Bool = false;
-    var onSave: ((_ weight: Double, _ grade: Double, _ name: String, _ editingState: Bool) -> ())?
+    var onSave: ((_ grade: Grade, _ editingState: Bool) -> ())?
     
     var tempGradeVal: String = ""
     var tempGradeWeight: String = ""
@@ -111,8 +111,6 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func addButton_TouchUpInside(_ sender: UIButton) {
         var valid : Bool = true
-        var tempWeight : Double? = weightTextField.text?.doubleValue
-        var tempGrade : Double? = gradeTextField.text?.doubleValue
         
         if noChanges {
             dismiss(animated: true)
@@ -132,7 +130,7 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
             weightTextField.layer.borderColor = UIColor.red.cgColor
             valid = false
         }
-        else if (tempWeight == nil) {
+        else if (weightTextField.text?.doubleValue == nil) {
             weightErrorMsgLabel.text = "Numeric values only"
             weightTextField.layer.borderColor = UIColor.red.cgColor
             valid = false
@@ -146,7 +144,7 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
             gradeTextField.layer.borderColor = UIColor.red.cgColor
             valid = false
         }
-        else if (tempGrade == nil) {
+        else if (gradeTextField.text?.doubleValue == nil) {
             gradeErrorMsgLabel.text = "Numeric values only"
             gradeTextField.layer.borderColor = UIColor.red.cgColor
             valid = false
@@ -157,7 +155,9 @@ class WeightedGradePopupViewController: UIViewController, UITextFieldDelegate {
         }
         
         if valid {
-            onSave?(tempWeight!, tempGrade!, nameTextField.text!, editGrade)
+            var newGrade = Grade(name: nameTextField.text!, weight: (weightTextField.text?.doubleValue)!, grade: (gradeTextField.text?.doubleValue)!)
+            
+            onSave?(newGrade, editGrade)
             dismiss(animated: true)
         }
     }

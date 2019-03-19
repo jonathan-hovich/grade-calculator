@@ -51,11 +51,11 @@ class WeightedClassPopupViewController: UIViewController, UITextFieldDelegate {
         // changes action button title based on state
         if !editClass {
             addButton.setTitle("Add", for: .normal)
-            titleLabel.text = "New Grade"
+            titleLabel.text = "New Class"
         }
         else {
             addButton.setTitle("Done", for: .normal)
-            titleLabel.text = "Edit Grade"
+            titleLabel.text = "Edit Class"
             creditTextField.text = tempClassCredit
             nameTextField.text = tempClassName
         }
@@ -133,7 +133,7 @@ class WeightedClassPopupViewController: UIViewController, UITextFieldDelegate {
         }
         
         if valid {
-            var newClass = Course(name: nameTextField.text!, creditWeight: (creditTextField.text?.doubleValue)!, currentGrade: nil)
+            var newClass = Course(name: nameTextField.text!, creditWeight: (creditTextField.text?.doubleValue)!, currentGrade: nil, grades: [])
             
             onSave?(newClass, editClass)
             dismiss(animated: true)
