@@ -15,6 +15,11 @@
 		133B861520FE6688001CED6C /* WeightedGradePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133B861420FE6688001CED6C /* WeightedGradePopupViewController.swift */; };
 		13DA82E921001C42002DBBD8 /* ViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DA82E821001C42002DBBD8 /* ViewControllerTableViewCell.swift */; };
 		F57B21DA223747E2009272FD /* ClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57B21D9223747E2009272FD /* ClassesViewController.swift */; };
+		F58EA3312290FAA000055091 /* Grade Calculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F58EA32F2290FAA000055091 /* Grade Calculator.xcdatamodeld */; };
+		F58EA3362290FCBE00055091 /* Grade+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58EA3322290FCBE00055091 /* Grade+CoreDataClass.swift */; };
+		F58EA3372290FCBE00055091 /* Grade+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58EA3332290FCBE00055091 /* Grade+CoreDataProperties.swift */; };
+		F58EA3402291025B00055091 /* Course+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58EA33E2291025B00055091 /* Course+CoreDataClass.swift */; };
+		F58EA3412291025B00055091 /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58EA33F2291025B00055091 /* Course+CoreDataProperties.swift */; };
 		F5B849102238203800264F6F /* WeightedClassPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B8490F2238203800264F6F /* WeightedClassPopupViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +34,11 @@
 		133B861420FE6688001CED6C /* WeightedGradePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightedGradePopupViewController.swift; sourceTree = "<group>"; };
 		13DA82E821001C42002DBBD8 /* ViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		F57B21D9223747E2009272FD /* ClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesViewController.swift; sourceTree = "<group>"; };
+		F58EA3302290FAA000055091 /* Grade Calculator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Grade Calculator.xcdatamodel"; sourceTree = "<group>"; };
+		F58EA3322290FCBE00055091 /* Grade+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Grade+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F58EA3332290FCBE00055091 /* Grade+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Grade+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F58EA33E2291025B00055091 /* Course+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F58EA33F2291025B00055091 /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F5B8490F2238203800264F6F /* WeightedClassPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightedClassPopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,8 +72,14 @@
 		133B860120FE6286001CED6C /* Grade Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				F58EA33E2291025B00055091 /* Course+CoreDataClass.swift */,
+				F58EA33F2291025B00055091 /* Course+CoreDataProperties.swift */,
+				F58EA3322290FCBE00055091 /* Grade+CoreDataClass.swift */,
+				F58EA3332290FCBE00055091 /* Grade+CoreDataProperties.swift */,
 				133B860220FE6286001CED6C /* AppDelegate.swift */,
+				F58EA32F2290FAA000055091 /* Grade Calculator.xcdatamodeld */,
 				133B860420FE6286001CED6C /* ViewController.swift */,
+				F57B21D9223747E2009272FD /* ClassesViewController.swift */,
 				F5B8490F2238203800264F6F /* WeightedClassPopupViewController.swift */,
 				133B861420FE6688001CED6C /* WeightedGradePopupViewController.swift */,
 				13DA82E821001C42002DBBD8 /* ViewControllerTableViewCell.swift */,
@@ -71,7 +87,6 @@
 				133B860920FE6288001CED6C /* Assets.xcassets */,
 				133B860B20FE6288001CED6C /* LaunchScreen.storyboard */,
 				133B860E20FE6288001CED6C /* Info.plist */,
-				F57B21D9223747E2009272FD /* ClassesViewController.swift */,
 			);
 			path = "Grade Calculator";
 			sourceTree = "<group>";
@@ -147,12 +162,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58EA3402291025B00055091 /* Course+CoreDataClass.swift in Sources */,
 				133B861520FE6688001CED6C /* WeightedGradePopupViewController.swift in Sources */,
 				133B860520FE6286001CED6C /* ViewController.swift in Sources */,
+				F58EA3372290FCBE00055091 /* Grade+CoreDataProperties.swift in Sources */,
 				F57B21DA223747E2009272FD /* ClassesViewController.swift in Sources */,
+				F58EA3362290FCBE00055091 /* Grade+CoreDataClass.swift in Sources */,
+				F58EA3412291025B00055091 /* Course+CoreDataProperties.swift in Sources */,
 				F5B849102238203800264F6F /* WeightedClassPopupViewController.swift in Sources */,
 				13DA82E921001C42002DBBD8 /* ViewControllerTableViewCell.swift in Sources */,
 				133B860320FE6286001CED6C /* AppDelegate.swift in Sources */,
+				F58EA3312290FAA000055091 /* Grade Calculator.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +381,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F58EA32F2290FAA000055091 /* Grade Calculator.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F58EA3302290FAA000055091 /* Grade Calculator.xcdatamodel */,
+			);
+			currentVersion = F58EA3302290FAA000055091 /* Grade Calculator.xcdatamodel */;
+			path = "Grade Calculator.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 133B85F720FE6286001CED6C /* Project object */;
 }

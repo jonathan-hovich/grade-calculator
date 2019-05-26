@@ -21,7 +21,7 @@ class WeightedClassPopupViewController: UIViewController, UITextFieldDelegate {
     var editClass: Bool = false;
     
     var noChanges: Bool = false;
-    var onSave: ((_ course: Course, _ editingState: Bool) -> ())?
+    var onSave: ((_ name: String, _ weight: Double, _ editingState: Bool) -> ())?
     
     var tempClassCredit: String = ""
     var tempClassName: String = ""
@@ -81,8 +81,6 @@ class WeightedClassPopupViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
-    
     @objc func textFieldDidChange(_ textField: UITextField){
         if (editClass) {
             if (tempClassCredit == creditTextField.text && tempClassName == nameTextField.text) {
@@ -100,7 +98,6 @@ class WeightedClassPopupViewController: UIViewController, UITextFieldDelegate {
         dismiss(animated: true)
     }
     
-
     @IBAction func addButton_TouchUpInside(_ sender: UIButton) {
         var valid : Bool = true
         
@@ -117,7 +114,7 @@ class WeightedClassPopupViewController: UIViewController, UITextFieldDelegate {
             nameTextField.layer.borderColor = UIColor.lightGray.cgColor
         }
         
-        
+
         if (!creditTextField.hasText) {
             creditTextField.layer.borderColor = UIColor.red.cgColor
             valid = false
@@ -130,12 +127,22 @@ class WeightedClassPopupViewController: UIViewController, UITextFieldDelegate {
         else {
             creditTextField.layer.borderColor = UIColor.lightGray.cgColor
             creditErrorMsgLabel.text = ""
+            
+            if ((creditTextField.text?.doubleValue)! < 0) {
+                creditErrorMsgLabel.text = "Positive values only"
+                creditTextField.layer.borderColor = UIColor.red.cgColor
+                valid = false
+            }
+            else if ((creditTextField.text?.doubleValue)! > 1000) {
+                creditErrorMsgLabel.text = "Maximum exceeded"
+                creditTextField.layer.borderColor = UIColor.red.cgColor
+                valid = false
+            }
+            
         }
         
         if valid {
-            var newClass = Course(name: nameTextField.text!, creditWeight: (creditTextField.text?.doubleValue)!, currentGrade: nil, grades: [])
-            
-            onSave?(newClass, editClass)
+            onSave?(nameTextField.text!, (creditTextField.text?.doubleValue)!, editClass)
             dismiss(animated: true)
         }
     }
